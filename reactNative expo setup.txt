@@ -1,0 +1,71 @@
+To set up an Expo project for React Native with JavaScript, follow these steps:
+
+### 1. Install Node.js
+First, make sure you have **Node.js** installed on your machine. You can download it from [here](https://nodejs.org/).
+
+### 2. Install Expo CLI
+Next, install the **Expo CLI** globally. Open your terminal or command prompt and run:
+```bash
+npm install -g expo-cli
+```
+
+### 3. Create a New Expo Project
+To create a new Expo project, run:
+```bash
+expo init my-new-project
+```
+Replace `my-new-project` with your desired project name. You'll be prompted to choose a template. For a simple JavaScript setup, choose the "blank" template.
+
+### 4. Navigate to Your Project Folder
+Change your working directory to the newly created project:
+```bash
+cd my-new-project
+```
+
+### 5. Start the Expo Development Server
+Now, start the Expo development server:
+```bash
+expo start
+```
+This will open the Expo Developer Tools in your browser. You can scan the QR code with the **Expo Go app** on your phone (available on iOS and Android) to view your project in the mobile app, or you can use an emulator/simulator.
+
+### 6. Modify Your Project Files
+In the project folder, you'll find the main app file is `App.js`. You can start editing this file to develop your app.
+
+For example, a simple `App.js` might look like this:
+```js
+import React from 'react';
+import { Text, View, StyleSheet } from 'react-native';
+
+export default function App() {
+  return (
+    <View style={styles.container}>
+      <Text>Hello, Expo React Native!</Text>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#fff',
+  },
+});
+```
+
+### 7. Additional Steps (Optional)
+If you want to install additional dependencies, you can do so using `expo install` or `npm install`. For example:
+```bash
+expo install react-navigation react-navigation-stack
+```
+
+### 8. Build and Publish Your App
+Once you're ready, you can build and publish your app using the following Expo commands:
+```bash
+expo build:android  # For Android
+expo build:ios      # For iOS (requires a macOS machine)
+```
+
+This setup will get you started with a React Native project using Expo!

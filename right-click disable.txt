@@ -1,0 +1,21 @@
+  useEffect(() => {
+    // Disable right-click
+    const handleContextMenu = (event) => {
+      event.preventDefault();
+    };
+
+    // Add event listener to document
+    document.addEventListener('contextmenu', handleContextMenu);
+
+    // Cleanup event listener on component unmount
+    return () => {
+      document.removeEventListener('contextmenu', handleContextMenu);
+    };
+  }, []);
+ 
+
+right click disable on site
+
+
+  user-select: none;
+  pointer-events: none;

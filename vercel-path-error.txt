@@ -1,0 +1,9 @@
+create vercel.json file then paste
+{
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/"
+    }
+  ]
+}
