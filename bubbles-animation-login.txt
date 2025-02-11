@@ -1,0 +1,553 @@
+// // // // import React, { useEffect, useState } from "react";
+
+// // // // const WaterBubbleBackground = () => {
+// // // //     const [bubbles, setBubbles] = useState([]);
+
+// // // //     useEffect(() => {
+// // // //         const generateBubbles = () => {
+// // // //             return Array.from({ length: 10 }, () => ({
+// // // //                 id: Math.random().toString(36).substr(2, 9), // Unique ID for keys
+// // // //                 cx: Math.random() * 100,
+// // // //                 cy: Math.random() * 100,
+// // // //                 r: Math.random() * 40 + 10,
+// // // //                 animationDelay: Math.random() * 5 + "s",
+// // // //                 animationDuration: Math.random() * 6 + 4 + "s",
+// // // //             }));
+// // // //         };
+
+// // // //         setBubbles(generateBubbles());
+// // // //     }, []);
+
+// // // //     return (
+// // // //         <svg
+// // // //             className="absolute inset-0 w-full h-full overflow-hidden"
+// // // //             xmlns="http://www.w3.org/2000/svg"
+// // // //         >
+// // // //             <defs>
+// // // //                 <radialGradient id="bubbleGradient" cx="50%" cy="50%" r="50%">
+// // // //                     <stop offset="0%" stopColor="rgba(255, 255, 255, 0.8)" />
+// // // //                     <stop offset="100%" stopColor="rgba(255, 255, 255, 0.1)" />
+// // // //                 </radialGradient>
+// // // //             </defs>
+// // // //             {bubbles.map((bubble) => (
+// // // //                 <circle
+// // // //                     key={bubble.id}
+// // // //                     cx={`${bubble.cx}%`}
+// // // //                     cy={`${bubble.cy}%`}
+// // // //                     r={bubble.r}
+// // // //                     fill="url(#bubbleGradient)"
+// // // //                     className="bubble"
+// // // //                     style={{
+// // // //                         animationDelay: bubble.animationDelay,
+// // // //                         animationDuration: bubble.animationDuration,
+// // // //                     }}
+// // // //                 />
+// // // //             ))}
+// // // //             <style>
+// // // //                 {`
+// // // //                 .bubble {
+// // // //                     animation: floatUp linear infinite;
+// // // //                     opacity: 0.6;
+// // // //                 }
+// // // //                 @keyframes floatUp {
+// // // //                     0% {
+// // // //                         transform: translateY(0) scale(1);
+// // // //                         opacity: 0.5;
+// // // //                     }
+// // // //                     50% {
+// // // //                         transform: translateY(-30vh) scale(1.1);
+// // // //                         opacity: 0.8;
+// // // //                     }
+// // // //                     100% {
+// // // //                         transform: translateY(-60vh) scale(1);
+// // // //                         opacity: 0;
+// // // //                     }
+// // // //                 }
+// // // //                 `}
+// // // //             </style>
+// // // //         </svg>
+// // // //     );
+// // // // };
+
+// // // // export default WaterBubbleBackground;
+
+
+// // // import React, { useEffect, useState } from "react";
+
+// // // const WaterBubbleBackground = () => {
+// // //     const [bubbles, setBubbles] = useState([]);
+
+// // //     useEffect(() => {
+// // //         const generateBubbles = () => {
+// // //             let newBubbles = [];
+// // //             for (let i = 0; i < 15; i++) {
+// // //                 newBubbles.push({
+// // //                     id: i,
+// // //                     size: Math.random() * 40 + 10, // Random size between 10 and 50
+// // //                     left: Math.random() * 100, // Random horizontal position
+// // //                     duration: Math.random() * 10 + 5, // Random float duration between 5s - 15s
+// // //                     delay: Math.random() * 5, // Random start delay
+// // //                 });
+// // //             }
+// // //             setBubbles(newBubbles);
+// // //         };
+// // //         generateBubbles();
+// // //     }, []);
+
+// // //     return (
+// // //         <div className="absolute inset-0 w-full h-full overflow-hidden">
+// // //             {bubbles.map((bubble) => (
+// // //                 <div
+// // //                     key={bubble.id}
+// // //                     className="bubble"
+// // //                     style={{
+// // //                         width: `${bubble.size}px`,
+// // //                         height: `${bubble.size}px`,
+// // //                         left: `${bubble.left}%`,
+// // //                         animationDuration: `${bubble.duration}s`,
+// // //                         animationDelay: `${bubble.delay}s`,
+// // //                     }}
+// // //                 ></div>
+// // //             ))}
+
+// // //             <style>
+// // //                 {`
+// // //                 .bubble {
+// // //                     position: absolute;
+// // //                     bottom: -50px; /* Start below the screen */
+// // //                     background: rgba(255, 255, 255, 0.3);
+// // //                     border-radius: 50%;
+// // //                     animation: floatUp linear infinite;
+// // //                     opacity: 0.7;
+// // //                 }
+
+// // //                 @keyframes floatUp {
+// // //                     0% {
+// // //                         transform: translateY(0) scale(1);
+// // //                         opacity: 0.5;
+// // //                     }
+// // //                     50% {
+// // //                         transform: translateY(-50vh) scale(1.2);
+// // //                         opacity: 0.9;
+// // //                     }
+// // //                     100% {
+// // //                         transform: translateY(-100vh) scale(1);
+// // //                         opacity: 0;
+// // //                     }
+// // //                 }
+// // //                 `}
+// // //             </style>
+// // //         </div>
+// // //     );
+// // // };
+
+// // // export default WaterBubbleBackground;
+
+
+// // import React, { useEffect, useState } from "react";
+
+// // const FloatingParticlesBackground = () => {
+// //     const [particles, setParticles] = useState([]);
+
+// //     useEffect(() => {
+// //         const generateParticles = () => {
+// //             let newParticles = [];
+// //             for (let i = 0; i < 25; i++) {
+// //                 newParticles.push({
+// //                     id: i,
+// //                     cx: Math.random() * 100, // X position (percentage)
+// //                     cy: Math.random() * 100, // Start at random Y position
+// //                     r: Math.random() * 4 + 2, // Random size (2px - 6px)
+// //                     duration: Math.random() * 6 + 4, // Speed (4s - 10s)
+// //                     delay: Math.random() * 3, // Random animation delay
+// //                 });
+// //             }
+// //             setParticles(newParticles);
+// //         };
+// //         generateParticles();
+// //     }, []);
+
+// //     return (
+// //         <svg className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none" xmlns="http://www.w3.org/2000/svg">
+// //             {particles.map((particle) => (
+// //                 <circle
+// //                     key={particle.id}
+// //                     cx={`${particle.cx}%`}
+// //                     cy={`${particle.cy}%`}
+// //                     r={particle.r}
+// //                     fill="rgba(255, 255, 255, 0.6)"
+// //                     className="particle"
+// //                     style={{
+// //                         animationDuration: `${particle.duration}s`,
+// //                         animationDelay: `${particle.delay}s`,
+// //                     }}
+// //                 />
+// //             ))}
+
+// //             <style>
+// //                 {`
+// //                 .particle {
+// //                     animation: floatUp ease-in-out infinite, flicker ease-in-out infinite;
+// //                     opacity: 0.7;
+// //                     filter: blur(1px);
+// //                 }
+
+// //                 @keyframes floatUp {
+// //                     0% {
+// //                         transform: translateY(0) scale(1);
+// //                         opacity: 0.6;
+// //                     }
+// //                     50% {
+// //                         transform: translateY(-50vh) scale(1.2);
+// //                         opacity: 0.9;
+// //                     }
+// //                     100% {
+// //                         transform: translateY(-100vh) scale(1);
+// //                         opacity: 0;
+// //                     }
+// //                 }
+
+// //                 @keyframes flicker {
+// //                     0%, 100% {
+// //                         opacity: 0.6;
+// //                     }
+// //                     50% {
+// //                         opacity: 1;
+// //                     }
+// //                 }
+// //                 `}
+// //             </style>
+// //         </svg>
+// //     );
+// // };
+
+// // export default FloatingParticlesBackground;
+
+
+// // import React, { useEffect, useState } from "react";
+
+// // const GalaxyBackground = () => {
+// //     const [stars, setStars] = useState([]);
+
+// //     useEffect(() => {
+// //         const generateStars = () => {
+// //             let newStars = [];
+// //             for (let i = 0; i < 100; i++) {
+// //                 newStars.push({
+// //                     id: i,
+// //                     cx: Math.random() * 100, // X position (percentage)
+// //                     cy: Math.random() * 100, // Y position (percentage)
+// //                     r: Math.random() * 2 + 1, // Random size (1px - 3px)
+// //                     opacity: Math.random() * 0.5 + 0.5, // Opacity variation
+// //                     duration: Math.random() * 3 + 2, // Twinkle speed (2s - 5s)
+// //                 });
+// //             }
+// //             setStars(newStars);
+// //         };
+// //         generateStars();
+// //     }, []);
+
+// //     return (
+// //         <svg className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none" xmlns="http://www.w3.org/2000/svg">
+// //             {/* Stars */}
+// //             {stars.map((star) => (
+// //                 <circle
+// //                     key={star.id}
+// //                     cx={`${star.cx}%`}
+// //                     cy={`${star.cy}%`}
+// //                     r={star.r}
+// //                     fill="white"
+// //                     opacity={star.opacity}
+// //                     className="twinkling-star"
+// //                     style={{
+// //                         animationDuration: `${star.duration}s`,
+// //                         animationDelay: `${Math.random() * 2}s`,
+// //                     }}
+// //                 />
+// //             ))}
+
+// //             {/* Nebula effect */}
+// //             <radialGradient id="nebulaGradient">
+// //                 <stop offset="0%" stopColor="rgba(100, 0, 200, 0.6)" />
+// //                 <stop offset="100%" stopColor="rgba(0, 0, 50, 0)" />
+// //             </radialGradient>
+// //             <circle cx="50%" cy="50%" r="40%" fill="url(#nebulaGradient)" opacity="0.3" className="nebula" />
+
+// //             <style>
+// //                 {`
+// //                 .twinkling-star {
+// //                     animation: twinkle ease-in-out infinite;
+// //                 }
+
+// //                 .nebula {
+// //                     animation: nebulaPulse 8s infinite alternate ease-in-out;
+// //                 }
+
+// //                 @keyframes twinkle {
+// //                     0%, 100% {
+// //                         opacity: 0.5;
+// //                     }
+// //                     50% {
+// //                         opacity: 1;
+// //                     }
+// //                 }
+
+// //                 @keyframes nebulaPulse {
+// //                     0% {
+// //                         transform: scale(1);
+// //                         opacity: 0.3;
+// //                     }
+// //                     100% {
+// //                         transform: scale(1.2);
+// //                         opacity: 0.6;
+// //                     }
+// //                 }
+// //                 `}
+// //             </style>
+// //         </svg>
+// //     );
+// // };
+
+// // export default GalaxyBackground;
+
+
+
+
+
+
+// // import React, { useEffect, useState } from "react";
+
+// // const GalaxyBackground = () => {
+// //     const [stars, setStars] = useState([]);
+
+// //     useEffect(() => {
+// //         const generateStars = () => {
+// //             let newStars = [];
+// //             for (let i = 0; i < 100; i++) {
+// //                 newStars.push({
+// //                     id: i,
+// //                     cx: Math.random() * 100, // X position (percentage)
+// //                     cy: Math.random() * 100, // Y position (percentage)
+// //                     r: Math.random() * 2 + 1, // Random size (1px - 3px)
+// //                     duration: Math.random() * 3 + 2, // Random twinkling speed (2s - 5s)
+// //                     delay: Math.random() * 3, // Random delay (0s - 3s)
+// //                 });
+// //             }
+// //             setStars(newStars);
+// //         };
+// //         generateStars();
+// //     }, []);
+
+// //     return (
+// //         <div className="absolute inset-0 w-full h-full overflow-hidden bg-black pointer-events-none">
+// //             {/* SVG for Stars */}
+// //             <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
+// //                 {stars.map((star) => (
+// //                     <circle
+// //                         key={star.id}
+// //                         cx={`${star.cx}%`}
+// //                         cy={`${star.cy}%`}
+// //                         r={star.r}
+// //                         fill="white"
+// //                         className="twinkle-star"
+// //                         style={{
+// //                             animationDuration: `${star.duration}s`,
+// //                             animationDelay: `${star.delay}s`,
+// //                         }}
+// //                     />
+// //                 ))}
+// //             </svg>
+
+// //             {/* Nebula Glow Effect */}
+// //             <div className="absolute inset-0">
+// //                 <div className="absolute w-96 h-96 bg-purple-700 blur-3xl opacity-30 rounded-full animate-pulse top-1/4 left-1/3"></div>
+// //                 <div className="absolute w-80 h-80 bg-blue-500 blur-3xl opacity-25 rounded-full animate-pulse top-1/3 right-1/4"></div>
+// //                 <div className="absolute w-72 h-72 bg-pink-500 blur-3xl opacity-20 rounded-full animate-pulse bottom-1/4 left-1/5"></div>
+// //             </div>
+
+// //             <style>
+// //                 {`
+// //                 .twinkle-star {
+// //                     animation: twinkle ease-in-out infinite;
+// //                 }
+
+// //                 @keyframes twinkle {
+// //                     0% { opacity: 0.6; }
+// //                     50% { opacity: 1; }
+// //                     100% { opacity: 0.6; }
+// //                 }
+// //                 `}
+// //             </style>
+// //         </div>
+// //     );
+// // };
+
+// // export default GalaxyBackground;
+
+
+
+// import React, { useEffect, useState } from "react";
+
+// const GalaxyBackground = () => {
+//     const [stars, setStars] = useState([]);
+
+//     useEffect(() => {
+//         const generateStars = () => {
+//             let newStars = [];
+//             for (let i = 0; i < 100; i++) {
+//                 newStars.push({
+//                     id: i,
+//                     x: Math.random() * 100, // Initial X position (percentage)
+//                     y: Math.random() * 100, // Initial Y position (percentage)
+//                     size: Math.random() * 2 + 1, // Random size (1px - 3px)
+//                     duration: Math.random() * 5 + 5, // Movement speed (5s - 10s)
+//                     delay: Math.random() * 3, // Delay before movement starts (0s - 3s)
+//                 });
+//             }
+//             setStars(newStars);
+//         };
+//         generateStars();
+//     }, []);
+
+//     return (
+//         <div className="absolute inset-0 w-full h-full overflow-hidden bg-black pointer-events-none">
+//             {/* SVG for Moving Stars */}
+//             <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
+//                 {stars.map((star) => (
+//                     <circle
+//                         key={star.id}
+//                         cx={`${star.x}%`}
+//                         cy={`${star.y}%`}
+//                         r={star.size}
+//                         fill="white"
+//                         className="moving-star"
+//                         style={{
+//                             animationDuration: `${star.duration}s`,
+//                             animationDelay: `${star.delay}s`,
+//                         }}
+//                     />
+//                 ))}
+//             </svg>
+
+//             {/* Nebula Glow Effect */}
+//             <div className="absolute inset-0">
+//                 <div className="absolute w-96 h-96 bg-purple-700 blur-3xl opacity-30 rounded-full animate-pulse top-1/4 left-1/3"></div>
+//                 <div className="absolute w-80 h-80 bg-blue-500 blur-3xl opacity-25 rounded-full animate-pulse top-1/3 right-1/4"></div>
+//                 <div className="absolute w-72 h-72 bg-pink-500 blur-3xl opacity-20 rounded-full animate-pulse bottom-1/4 left-1/5"></div>
+//             </div>
+
+//             <style>
+//                 {`
+//                 .moving-star {
+//                     animation: moveStar linear infinite, twinkle ease-in-out infinite;
+//                 }
+
+//                 @keyframes moveStar {
+//                     0% { transform: translate(0, 0); opacity: 1; }
+//                     50% { transform: translate(10vw, -10vh); opacity: 0.8; }
+//                     100% { transform: translate(-10vw, 10vh); opacity: 1; }
+//                 }
+
+//                 @keyframes twinkle {
+//                     0% { opacity: 0.6; }
+//                     50% { opacity: 1; }
+//                     100% { opacity: 0.6; }
+//                 }
+//                 `}
+//             </style>
+//         </div>
+//     );
+// };
+
+// export default GalaxyBackground;
+
+
+
+
+
+
+
+
+
+
+
+
+
+import React, { useEffect, useState } from "react";
+
+const FireBackground = () => {
+    const [particles, setParticles] = useState([]);
+
+    useEffect(() => {
+        const generateParticles = () => {
+            let newParticles = [];
+            for (let i = 0; i < 30; i++) {
+                newParticles.push({
+                    id: i,
+                    cx: Math.random() * 100, // X position (percentage)
+                    cy: Math.random() * 40 + 60, // Start near the bottom
+                    r: Math.random() * 6 + 3, // Random size (3px - 9px)
+                    duration: Math.random() * 4 + 2, // Speed (2s - 6s)
+                    delay: Math.random() * 2, // Random animation delay
+                    color: `rgba(255, ${Math.floor(Math.random() * 150 + 100)}, 0, ${Math.random() * 0.5 + 0.5})`,
+                });
+            }
+            setParticles(newParticles);
+        };
+        generateParticles();
+    }, []);
+
+    return (
+        <svg className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none" xmlns="http://www.w3.org/2000/svg">
+            {particles.map((particle) => (
+                <circle
+                    key={particle.id}
+                    cx={`${particle.cx}%`}
+                    cy={`${particle.cy}%`}
+                    r={particle.r}
+                    fill={particle.color}
+                    className="fire-particle"
+                    style={{
+                        animationDuration: `${particle.duration}s`,
+                        animationDelay: `${particle.delay}s`,
+                    }}
+                />
+            ))}
+
+            <style>
+                {`
+                .fire-particle {
+                    animation: riseUp ease-in-out infinite, flicker ease-in-out infinite;
+                    filter: blur(2px);
+                }
+
+                @keyframes riseUp {
+                    0% {
+                        transform: translateY(0) scale(1);
+                        opacity: 1;
+                    }
+                    50% {
+                        transform: translateY(-50vh) scale(1.2);
+                        opacity: 0.7;
+                    }
+                    100% {
+                        transform: translateY(-100vh) scale(0.8);
+                        opacity: 0;
+                    }
+                }
+
+                @keyframes flicker {
+                    0%, 100% {
+                        opacity: 0.8;
+                    }
+                    50% {
+                        opacity: 1;
+                    }
+                }
+                `}
+            </style>
+        </svg>
+    );
+};
+
+export default FireBackground;

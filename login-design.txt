@@ -1,0 +1,366 @@
+import { useState } from "react";
+import WaterBubbleBackground from "./WaterBubbleBackground";
+
+import heroImage from "../assets/Logo-banner.png";
+
+function AdminAuth() {
+    const [isSignup, setIsSignup] = useState(false);
+
+    return (
+        <div className="relative min-h-screen flex flex-col items-center justify-center bg-gradient-to-r from-[#060B33] to-[#383F71] px-4 overflow-hidden">
+            <WaterBubbleBackground /> {/* Add the animated background */}
+
+            {/* Logo */}
+            <img src={heroImage} alt="Company Logo" className="w-1/5 mb-6 relative z-10" />
+
+            {/* Authentication Box */}
+            <div className="bg-white shadow-lg rounded-lg overflow-hidden grid grid-cols-1 sm:grid-cols-2 max-w-4xl w-full min-h-[500px] relative z-10">
+                {/* Left Side - Image */}
+                <div className="hidden sm:flex items-center justify-center bg-gray-100">
+                    <img
+                        src="https://img.freepik.com/free-photo/smiling-young-businessman_1098-778.jpg?t=st=1739180693~exp=1739184293~hmac=1293ed75c42a70604e34f5b26468fffb47ed502c683a11e322cac6fc979dc3a7&w=1380"
+                        alt="Admin Access"
+                        className="w-full h-full object-cover"
+                    />
+                </div>
+
+                {/* Right Side - Auth Form */}
+                <div className="p-10 flex flex-col justify-center w-full min-h-[500px]">
+                    <h2 className="text-2xl font-semibold text-gray-700 text-center mb-6">
+                        {isSignup ? "Admin Signup" : "Admin Login"}
+                    </h2>
+
+                    <form className="space-y-4 flex flex-col justify-between flex-grow min-h-[300px]">
+                        {isSignup && (
+                            <div>
+                                <label htmlFor="name" className="block text-gray-600 text-sm mb-1">
+                                    Full Name
+                                </label>
+                                <input
+                                    id="name"
+                                    type="text"
+                                    placeholder="Enter your name"
+                                    className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+                                    required
+                                />
+                            </div>
+                        )}
+
+                        <div>
+                            <label htmlFor="email" className="block text-gray-600 text-sm mb-1">
+                                Email
+                            </label>
+                            <input
+                                id="email"
+                                type="email"
+                                placeholder="Enter your email"
+                                className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+                                required
+                            />
+                        </div>
+
+                        <div>
+                            <label htmlFor="password" className="block text-gray-600 text-sm mb-1">
+                                Password
+                            </label>
+                            <input
+                                id="password"
+                                type="password"
+                                placeholder="Enter your password"
+                                className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+                                required
+                            />
+                        </div>
+
+                        {isSignup && (
+                            <div>
+                                <label htmlFor="confirmPassword" className="block text-gray-600 text-sm mb-1">
+                                    Confirm Password
+                                </label>
+                                <input
+                                    id="confirmPassword"
+                                    type="password"
+                                    placeholder="Confirm your password"
+                                    className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+                                    required
+                                />
+                            </div>
+                        )}
+
+                        <button
+                            type="submit"
+                            className="w-full text-white text-sm uppercase font-medium px-5 py-2.5 rounded-lg transition-all duration-300 bg-gradient-to-r from-[#DB0032] to-[#FA6602] hover:opacity-90 focus:outline-none"
+                        >
+                            {isSignup ? "Sign Up" : "Login"}
+                        </button>
+                    </form>
+
+                    {!isSignup && (
+                        <p className="text-center text-sm text-gray-500 mt-4 cursor-pointer hover:text-[#DB0032]">
+                            Forgot password?
+                        </p>
+                    )}
+
+                    <p
+                        className="text-center text-sm text-gray-500 mt-4 cursor-pointer hover:text-[#DB0032]"
+                        onClick={() => setIsSignup(!isSignup)}
+                    >
+                        {isSignup
+                            ? "Already have an account? Login here"
+                            : "Don't have an account? Sign up here"}
+                    </p>
+                </div>
+            </div>
+        </div>
+    );
+}
+
+export default AdminAuth;
+
+
+// import { useState } from "react";
+// import WaterBubbleBackground from "./WaterBubbleBackground";
+
+// import heroImage from "../assets/Logo-banner.png";
+
+// function AdminAuth() {
+//     const [isSignup, setIsSignup] = useState(false);
+
+//     return (
+//         <div className="relative min-h-screen flex flex-col items-center justify-center bg-gradient-to-r from-[#060B33] to-[#383F71] px-4 overflow-hidden">
+//             <WaterBubbleBackground /> {/* Add the animated background */}
+
+//             {/* Authentication Box */}
+//             <div className="bg-white shadow-lg rounded-lg overflow-hidden grid grid-cols-1 sm:grid-cols-2 max-w-4xl w-full min-h-[500px] relative z-10">
+//                 {/* Left Side - Image with Logo Overlay */}
+//                 <div className="hidden sm:flex items-center justify-center bg-gray-100 relative">
+//                     <img
+//                         src="https://img.freepik.com/free-photo/smiling-young-businessman_1098-778.jpg?t=st=1739180693~exp=1739184293~hmac=1293ed75c42a70604e34f5b26468fffb47ed502c683a11e322cac6fc979dc3a7&w=1380"
+//                         alt="Admin Access"
+//                         className="w-full h-full object-cover"
+//                     />
+//                     {/* Logo Overlay */}
+//                     <img
+//                         src={heroImage}
+//                         alt="Company Logo"
+//                         className="absolute top-5 left-5 w-24 sm:w-48 bg-white bg-opacity-70 p-2 rounded-lg shadow-md"
+//                     />
+//                 </div>
+
+//                 {/* Right Side - Auth Form */}
+//                 <div className="p-10 flex flex-col justify-center w-full min-h-[500px]">
+//                     <h2 className="text-2xl font-semibold text-gray-700 text-center mb-6">
+//                         {isSignup ? "Admin Signup" : "Admin Login"}
+//                     </h2>
+
+//                     <form className="space-y-4 flex flex-col justify-between flex-grow min-h-[300px]">
+//                         {isSignup && (
+//                             <div>
+//                                 <label htmlFor="name" className="block text-gray-600 text-sm mb-1">
+//                                     Full Name
+//                                 </label>
+//                                 <input
+//                                     id="name"
+//                                     type="text"
+//                                     placeholder="Enter your name"
+//                                     className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+//                                     required
+//                                 />
+//                             </div>
+//                         )}
+
+//                         <div>
+//                             <label htmlFor="email" className="block text-gray-600 text-sm mb-1">
+//                                 Email
+//                             </label>
+//                             <input
+//                                 id="email"
+//                                 type="email"
+//                                 placeholder="Enter your email"
+//                                 className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+//                                 required
+//                             />
+//                         </div>
+
+//                         <div>
+//                             <label htmlFor="password" className="block text-gray-600 text-sm mb-1">
+//                                 Password
+//                             </label>
+//                             <input
+//                                 id="password"
+//                                 type="password"
+//                                 placeholder="Enter your password"
+//                                 className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+//                                 required
+//                             />
+//                         </div>
+
+//                         {isSignup && (
+//                             <div>
+//                                 <label htmlFor="confirmPassword" className="block text-gray-600 text-sm mb-1">
+//                                     Confirm Password
+//                                 </label>
+//                                 <input
+//                                     id="confirmPassword"
+//                                     type="password"
+//                                     placeholder="Confirm your password"
+//                                     className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+//                                     required
+//                                 />
+//                             </div>
+//                         )}
+
+//                         <button
+//                             type="submit"
+//                             className="w-full text-white text-sm uppercase font-medium px-5 py-2.5 rounded-lg transition-all duration-300 bg-gradient-to-r from-[#DB0032] to-[#FA6602] hover:opacity-90 focus:outline-none"
+//                         >
+//                             {isSignup ? "Sign Up" : "Login"}
+//                         </button>
+//                     </form>
+
+//                     {!isSignup && (
+//                         <p className="text-center text-sm text-gray-500 mt-4 cursor-pointer hover:text-[#DB0032]">
+//                             Forgot password?
+//                         </p>
+//                     )}
+
+//                     <p
+//                         className="text-center text-sm text-gray-500 mt-4 cursor-pointer hover:text-[#DB0032]"
+//                         onClick={() => setIsSignup(!isSignup)}
+//                     >
+//                         {isSignup
+//                             ? "Already have an account? Login here"
+//                             : "Don't have an account? Sign up here"}
+//                     </p>
+//                 </div>
+//             </div>
+//         </div>
+//     );
+// }
+
+// export default AdminAuth;
+
+
+// import { useState } from "react";
+// import WaterBubbleBackground from "./WaterBubbleBackground";
+
+// import heroImage from "../assets/Logo-banner.png";
+
+// function AdminAuth() {
+//     const [isSignup, setIsSignup] = useState(false);
+
+//     return (
+//         <div className="relative min-h-screen flex flex-col items-center justify-center bg-gradient-to-r from-[#060B33] to-[#383F71] px-4 overflow-hidden">
+//             <WaterBubbleBackground /> {/* Add the animated background */}
+
+//             {/* Authentication Box */}
+//             <div className="bg-white shadow-lg rounded-lg overflow-hidden grid grid-cols-1 sm:grid-cols-2 max-w-4xl w-full min-h-[500px] relative z-10">
+//                 {/* Left Side - Image with Centered Logo */}
+//                 <div className="hidden sm:flex items-center justify-center bg-gray-100 relative">
+//                     <img
+//                         src="https://img.freepik.com/free-photo/smiling-young-businessman_1098-778.jpg?t=st=1739180693~exp=1739184293~hmac=1293ed75c42a70604e34f5b26468fffb47ed502c683a11e322cac6fc979dc3a7&w=1380"
+//                         alt="Admin Access"
+//                         className="w-full h-full object-cover"
+//                     />
+//                     {/* Centered Logo Overlay */}
+//                     <div className="absolute inset-0 flex justify-center items-center bg-black bg-opacity-50 p-3 ">
+//                         <img
+//                             src={heroImage}
+//                             alt="Company Logo"
+//                             className="w-40 sm:w-60 lg:w-60"
+//                         />
+//                     </div>
+//                 </div>
+
+//                 {/* Right Side - Auth Form */}
+//                 <div className="p-10 flex flex-col justify-center w-full min-h-[500px]">
+//                     <h2 className="text-2xl font-semibold text-gray-700 text-center mb-6">
+//                         {isSignup ? "Admin Signup" : "Admin Login"}
+//                     </h2>
+
+//                     <form className="space-y-4 flex flex-col justify-between flex-grow min-h-[300px]">
+//                         {isSignup && (
+//                             <div>
+//                                 <label htmlFor="name" className="block text-gray-600 text-sm mb-1">
+//                                     Full Name
+//                                 </label>
+//                                 <input
+//                                     id="name"
+//                                     type="text"
+//                                     placeholder="Enter your name"
+//                                     className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+//                                     required
+//                                 />
+//                             </div>
+//                         )}
+
+//                         <div>
+//                             <label htmlFor="email" className="block text-gray-600 text-sm mb-1">
+//                                 Email
+//                             </label>
+//                             <input
+//                                 id="email"
+//                                 type="email"
+//                                 placeholder="Enter your email"
+//                                 className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+//                                 required
+//                             />
+//                         </div>
+
+//                         <div>
+//                             <label htmlFor="password" className="block text-gray-600 text-sm mb-1">
+//                                 Password
+//                             </label>
+//                             <input
+//                                 id="password"
+//                                 type="password"
+//                                 placeholder="Enter your password"
+//                                 className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+//                                 required
+//                             />
+//                         </div>
+
+//                         {isSignup && (
+//                             <div>
+//                                 <label htmlFor="confirmPassword" className="block text-gray-600 text-sm mb-1">
+//                                     Confirm Password
+//                                 </label>
+//                                 <input
+//                                     id="confirmPassword"
+//                                     type="password"
+//                                     placeholder="Confirm your password"
+//                                     className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+//                                     required
+//                                 />
+//                             </div>
+//                         )}
+
+//                         <button
+//                             type="submit"
+//                             className="w-full text-white text-sm uppercase font-medium px-5 py-2.5 rounded-lg transition-all duration-300 bg-gradient-to-r from-[#DB0032] to-[#FA6602] hover:opacity-90 focus:outline-none"
+//                         >
+//                             {isSignup ? "Sign Up" : "Login"}
+//                         </button>
+//                     </form>
+
+//                     {!isSignup && (
+//                         <p className="text-center text-sm text-gray-500 mt-4 cursor-pointer hover:text-[#DB0032]">
+//                             Forgot password?
+//                         </p>
+//                     )}
+
+//                     <p
+//                         className="text-center text-sm text-gray-500 mt-4 cursor-pointer hover:text-[#DB0032]"
+//                         onClick={() => setIsSignup(!isSignup)}
+//                     >
+//                         {isSignup
+//                             ? "Already have an account? Login here"
+//                             : "Don't have an account? Sign up here"}
+//                     </p>
+//                 </div>
+//             </div>
+//         </div>
+//     );
+// }
+
+// export default AdminAuth;
